@@ -6,34 +6,18 @@ public class Eraser {
 		String str = erase("Cou cou  J M  B");
 		System.out.println(str);
 	}
-	
-    public static String erase(String str) {
-        //throw new UnsupportedOperationException("Unimplemented");
-    	
-    	String s1 = "";
-    	
-    	if(str.length() > 1) {
-		if(str.charAt(0) != ' ' || str.charAt(0) == ' ' && str.charAt(1) == ' ') {
-	    		s1 += String.valueOf(str.charAt(0));
-	    	}
-    	}
-    	
-    	
-	for(int i = 1; i < str.length() - 1 ; i++) {
-    		if(str.charAt(i) != ' ' || (str.charAt(i-1) == ' ' || str.charAt(i+1) == ' ')) {
-    			s1 += String.valueOf(str.charAt(i));
-    		}
-    	}
-		
-		
-	if(str.length() > 1) {
-		if(str.charAt(str.length() - 1) != ' ' || str.charAt(str.length() - 2) == ' ') {
-			s1 += String.valueOf(str.charAt(str.length() - 1));		
-	    	}
+
+	public static String erase(String str) {
+				StringBuilder StrB = new StringBuilder(str);
+				int taille = StrB.length();
+				for(int i = 0;i< taille;i++) {
+					if(StrB.charAt(i)== (char)32 && StrB.charAt(Math.min(i+1,taille-2))!= (char)32
+							&& StrB.charAt(Math.max(i-1,1))!= (char)32){
+						StrB.deleteCharAt(i);
+						taille = StrB.length();
+					}
+				}
+				str = StrB.toString();
+				return str;
+		        }
 	}
-		
-    		
-	return s1;
-        
-    }
-}
