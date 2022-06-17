@@ -1,50 +1,16 @@
-package eraser;
+str = "Cou cou  J M  B"
 
-public class Eraser {
+# return string without spaces
+def erase(str):
+	result = ""
+	for i in range(len(str)):
+		if str[i] == " ":
+			if i != 0 and str[i-1] == " ":
+				result += str[i];
+			elif i+1 < len(str) and str[i+1] == " ":
+				result += str[i]
+		else:
+			result += str[i]
+	return result
 
-	public static void main(String[] args) {
-		String str = erase("Cou cou  J M  B");
-		System.out.println(str);
-	}
-
-
-	/***
-	 * Méthode permettant de supprimer les espaces simples et gardant les espaces multiples 
-	 * @param str
-	 * @return str 
-	 */
-    public static String erase(String str) {
-    	int tailleM ;
-    	String newStr = "";
-    	int cmpt = 0;
-        tailleM = str.length() ;
-        
-        for (int i = 0 ; i < tailleM ; i ++) {
-        	char caract = str.charAt(i);
-        	if (caract == ' ') {
-            	cmpt ++; // Compte du nombre d'espace 
-            }
-        	else { 
-        		if (cmpt > 1) { // Si le nombre  d'espace est supp�rieur � 1 alors on les affiches 
-        			for (int j = 0; j < cmpt ; j++) {
-        				newStr += ' ';
-        				}
-        		
-        		
-        		}
-        		cmpt = 0;
-        		newStr += caract ;
-        		}
-        		
-    
-    
-        }
-		
-        
-        
-        return newStr;
-    
-    
-    
-    }
-}
+erase(str)
